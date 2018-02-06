@@ -1,0 +1,19 @@
+{
+  "name": "php-light-analytics",
+  "description": "A simple angularjs module for sending analytics data",
+  "main": "phpLightAnalyticsModule.js",
+  "keywords": [
+    "AngularJS",
+    "PHPLight",
+    "PHP",
+    "Light",
+    "Module",
+    "Analytics",
+    "Events"
+  ],
+  "authors": [
+    "Khalid Sookia <khalidsookia@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/php-light/angularjs-analytics-module"
+}
