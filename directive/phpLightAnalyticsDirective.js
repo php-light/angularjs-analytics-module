@@ -13,6 +13,7 @@ phpLightAnalyticsModule.directive('phpLightAnalytics', ['$rootScope', '$window',
         restrict: 'EA',
         scope: {
             identifier: '@phpLightAnalyticsIdentifier',
+            event: '@phpLightAnalyticsEvent',
             misc: '=phpLightAnalyticsMisc'
         },
         link: function ($scope, $element) {
@@ -21,7 +22,7 @@ phpLightAnalyticsModule.directive('phpLightAnalytics', ['$rootScope', '$window',
                 var data = {};
 
                 data.identifier = $scope.identifier;
-                data.event = event.type;
+                data.event = $scope.event ? $scope.event : event.type;
 
                 if ($scope.misc && !angular.equals($scope.misc, {})) {
                     data.misc = $scope.misc;
