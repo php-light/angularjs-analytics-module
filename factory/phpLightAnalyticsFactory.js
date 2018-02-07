@@ -7,24 +7,28 @@
 
 'use strict';
 
-phpLightCommentModule.factory('phpLightAnalyticsFactory', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
-    var phpLightAnalyticsFactory = {};
+phpLightCommentModule.factory('phpLightAnalyticsFactory', ['$rootScope', '$http', '$q', '$window',
+    function ($rootScope, $http, $q, $window) {
+        var phpLightAnalyticsFactory = {};
 
-    phpLightAnalyticsFactory.send = function (data) {
-        var deferred = $q.defer();
+        phpLightAnalyticsFactory.send = function (data) {
+            var deferred = $q.defer();
 
-        $http.post($rootScope.restUrl + "?route=php_light_analytics_send", { data: data }).then(
-            function (response) {
-                deferred.resolve(response);
-            },
-            function (error) {
-                console.error('Error in phpLightAnalyticsFactory send method');
-                console.error(error);
-            }
-        );
+            data.currentUrl = $window.location.href;
+            data.currentHash = $window.location.hash;
 
-        return deferred.promise;
-    };
+            $http.post($rootScope.restUrl + "?route=php_light_analytics_send", { data: data }).then(
+                function (response) {
+                    deferred.resolve(response);
+                },
+                function (error) {
+                    console.error('Error in phpLightAnalyticsFactory send method');
+                    console.error(error);
+                }
+            );
 
-    return phpLightAnalyticsFactory;
-}]);
+            return deferred.promise;
+        };
+
+        return phpLightAnalyticsFactory;
+    }]);

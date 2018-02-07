@@ -20,17 +20,12 @@ phpLightAnalyticsModule.directive('phpLightAnalytics', ['$rootScope', '$window',
                 event.preventDefault();
                 var data = {};
 
-                data.currentUrl = $window.location.href;
-                data.currentHash = $window.location.hash;
                 data.identifier = $scope.identifier;
                 data.event = event.type;
 
                 if ($scope.misc && !angular.equals($scope.misc, {})) {
                     data.misc = $scope.misc;
                 }
-
-                if ($rootScope.security && $rootScope.security.user)
-                    data.user = $rootScope.security.user;
 
                 phpLightAnalyticsFactory.send(data);
             });
