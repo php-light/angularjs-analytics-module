@@ -18,7 +18,6 @@ phpLightAnalyticsModule.directive('phpLightAnalytics', ['$rootScope', '$window',
         },
         link: function ($scope, $element) {
             $element.on('click', function (event) {
-                event.preventDefault();
                 var data = {};
 
                 data.identifier = $scope.identifier;
