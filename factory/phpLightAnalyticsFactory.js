@@ -16,7 +16,7 @@ phpLightCommentModule.factory('phpLightAnalyticsFactory', ['$rootScope', '$http'
             data.currentUrl = $window.location.href;
             data.currentHash = $window.location.hash;
 
-            angular.forEach(VALUE_PARAMETERS.phpLightAnalytics.ignore.hash.startsWith, function (ignore) {
+            angular.forEach(VALUE_PARAMETERS.phpLight.analytics.ignore.hash.startsWith, function (ignore) {
                 if (data.currentHash.match(new RegExp('^#!\\/' + ignore , 'i'))) {
                     shouldIgnore = true;
                 }
